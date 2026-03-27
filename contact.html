@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Involved — EMBRACE</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --coral: #d95f3b;
+      --coral-light: #e8795e;
+      --coral-pale: #fdf0ec;
+      --off-white: #faf8f5;
+      --cream: #f2ede6;
+      --stone: #e4ddd4;
+      --text: #1e1a16;
+      --text-mid: #4a4139;
+      --text-muted: #7a6f65;
+      --navy: #1e2d4a;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off-white);
+      color: var(--text);
+      opacity: 0;
+      animation: fadeIn 0.7s ease forwards;
+    }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      background: var(--white);
+      border-bottom: 1px solid var(--stone);
+      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { height: 36px; width: auto; }
+    .nav-logo-text { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.3rem; color: var(--text); }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text-mid); text-decoration: none;
+      padding: 8px 16px; border-radius: 4px;
+      transition: color 0.2s, background 0.2s; position: relative;
+    }
+    .nav-links a:hover { color: var(--coral); background: var(--coral-pale); }
+    .nav-links a.active { color: var(--coral); }
+    .nav-links a.active::after {
+      content: ''; position: absolute;
+      bottom: -1px; left: 16px; right: 16px;
+      height: 2px; background: var(--coral); border-radius: 2px;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: var(--navy);
+      padding: 56px 40px 48px;
+      position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 90% 50%, rgba(217,95,59,0.15) 0%, transparent 60%);
+    }
+    .page-header-inner {
+      max-width: 1100px; margin: 0 auto;
+      position: relative; z-index: 1;
+      opacity: 0; animation: slideUp 0.6s 0.2s ease forwards;
+    }
+    .page-header .eyebrow {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--coral-light); margin-bottom: 10px;
+    }
+    .page-header h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--white); line-height: 1.15;
+    }
+    .page-header p {
+      margin-top: 14px;
+      font-size: 1rem; font-weight: 300;
+      color: rgba(255,255,255,0.72); max-width: 560px; line-height: 1.7;
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 1100px; margin: 0 auto;
+      padding: 64px 40px 96px;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* ── LEFT CONTENT ── */
+    .contact-intro { }
+
+    .section-eyebrow {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--coral); margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--text); line-height: 1.2; margin-bottom: 20px;
+    }
+
+    .section-body {
+      font-size: 1rem; font-weight: 300;
+      line-height: 1.8; color: var(--text-mid);
+    }
+
+    .section-body p + p { margin-top: 14px; }
+
+    /* WHO WE WANT */
+    .who-list {
+      margin-top: 32px; display: flex; flex-direction: column; gap: 14px;
+    }
+
+    .who-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: var(--white);
+      border: 1px solid var(--stone);
+      border-radius: 8px; padding: 16px 20px;
+    }
+
+    .who-icon {
+      font-size: 1.4rem; flex-shrink: 0; margin-top: 2px;
+    }
+
+    .who-item h4 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1rem; color: var(--text); margin-bottom: 3px;
+    }
+
+    .who-item p {
+      font-size: 0.85rem; font-weight: 300;
+      color: var(--text-muted); line-height: 1.6;
+    }
+
+    /* ── FORM ── */
+    .contact-form-wrap {
+      background: var(--white);
+      border: 1px solid var(--stone);
+      border-radius: 12px;
+      padding: 36px;
+      position: sticky;
+      top: 84px;
+    }
+
+    .form-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.4rem; color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .form-subtitle {
+      font-size: 0.85rem; font-weight: 300;
+      color: var(--text-muted); margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .form-group {
+      display: flex; flex-direction: column; gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-mid);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem; font-weight: 300;
+      color: var(--text);
+      background: var(--off-white);
+      border: 1px solid var(--stone);
+      border-radius: 6px;
+      padding: 10px 14px;
+      width: 100%;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--coral);
+      box-shadow: 0 0 0 3px rgba(217,95,59,0.1);
+    }
+
+    .form-group textarea { min-height: 100px; }
+
+    .form-note {
+      font-size: 0.75rem; font-weight: 300;
+      color: var(--text-muted); margin-bottom: 20px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--coral);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 500;
+      letter-spacing: 0.06em;
+      padding: 14px 24px;
+      border: none; border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .submit-btn:hover { background: var(--coral-light); transform: translateY(-1px); }
+
+    /* ── DIRECT CONTACT ── */
+    .direct-contact {
+      margin-top: 48px;
+      padding: 24px 28px;
+      background: var(--cream);
+      border-radius: 10px;
+      border-left: 3px solid var(--coral);
+    }
+
+    .direct-contact h4 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.05rem; color: var(--text); margin-bottom: 8px;
+    }
+
+    .direct-contact p {
+      font-size: 0.88rem; font-weight: 300;
+      color: var(--text-mid); line-height: 1.7;
+    }
+
+    .direct-contact a {
+      color: var(--coral); text-decoration: none;
+      border-bottom: 1px solid rgba(217,95,59,0.3);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.55);
+      text-align: center; padding: 28px 40px;
+      font-size: 0.78rem; font-weight: 300; letter-spacing: 0.04em;
+    }
+    footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 768px) {
+      .nav-inner, .page-header { padding-left: 20px; padding-right: 20px; }
+      main { grid-template-columns: 1fr; gap: 40px; padding: 40px 20px 60px; }
+      .contact-form-wrap { position: static; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <img src="embrace-symbol.jpg" alt="EMBRACE symbol" />
+        <span class="nav-logo-text">EMBRACE</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Research</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html" class="active">Get Involved</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <p class="eyebrow">Join the Collaborative</p>
+      <h1>Get Involved</h1>
+      <p>We are looking for clinicians, healthcare administrators, and community members to inform and disseminate our research.</p>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- LEFT -->
+    <div class="contact-intro">
+      <p class="section-eyebrow">Who We're Looking For</p>
+      <h2 class="section-title">This research is stronger with you</h2>
+      <div class="section-body">
+        <p>
+          EMBRACE is a collaborative at its core. Our work is shaped by the perspectives
+          of people who live and work within the systems we study — and it only reaches
+          its potential when those voices are part of the process.
+        </p>
+        <p>
+          Whether you're a clinician treating patients, an administrator managing a health
+          system, or a community member who has experienced emergency care firsthand,
+          we want to hear from you.
+        </p>
+      </div>
+
+      <div class="who-list">
+        <div class="who-item">
+          <div class="who-icon">🩺</div>
+          <div>
+            <h4>Clinicians &amp; EMS Providers</h4>
+            <p>Physicians, nurses, paramedics, and EMTs who work in emergency and prehospital settings.</p>
+          </div>
+        </div>
+        <div class="who-item">
+          <div class="who-icon">🏛️</div>
+          <div>
+            <h4>Healthcare Administrators</h4>
+            <p>Hospital leaders, EMS directors, and health system administrators involved in emergency care.</p>
+          </div>
+        </div>
+        <div class="who-item">
+          <div class="who-icon">🤝</div>
+          <div>
+            <h4>Community Members</h4>
+            <p>Patients, caregivers, and community advocates who can share lived experiences with emergency care.</p>
+          </div>
+        </div>
+        <div class="who-item">
+          <div class="who-icon">🔬</div>
+          <div>
+            <h4>Researchers &amp; Collaborators</h4>
+            <p>Academics and research teams interested in partnership or joint projects on emergency systems.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="direct-contact">
+        <h4>Prefer to reach out directly?</h4>
+        <p>
+          Contact Principal Investigator Mehul Patel, PhD at
+          <a href="#" onclick="this.href='mailto:' + 'mehul.patel' + '@' + 'duke.edu'">mehul.patel&#64;duke.edu</a>.
+        </p>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="contact-form-wrap">
+      <h3 class="form-title">Let's connect</h3>
+      <p class="form-subtitle">Fill out the form below and we'll be in touch about ways to get involved.</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="fname" placeholder="Jane" />
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" name="lname" placeholder="Smith" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="jane.smith@example.com" />
+      </div>
+
+      <div class="form-group">
+        <label for="org">Organization / Affiliation <span style="font-weight:300;text-transform:none;letter-spacing:0">(optional)</span></label>
+        <input type="text" id="org" name="org" placeholder="UNC Health, Wake EMS, etc." />
+      </div>
+
+      <div class="form-group">
+        <label for="role">I am a…</label>
+        <select id="role" name="role">
+          <option value="">Select one</option>
+          <option>Clinician / EMS Provider</option>
+          <option>Healthcare Administrator</option>
+          <option>Community Member / Patient / Caregiver</option>
+          <option>Researcher / Academic</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Why are you interested? <span style="font-weight:300;text-transform:none;letter-spacing:0">(optional)</span></label>
+        <textarea id="message" name="message" placeholder="Tell us a bit about your interest in EMBRACE…"></textarea>
+      </div>
+
+      <p class="form-note">* Note: This form is for expression of interest only. Submitting does not enroll you in a study.</p>
+
+      <button class="submit-btn" onclick="alert('Thank you for your interest! We will be in touch soon.')">Submit →</button>
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2026 EMBRACE &nbsp;·&nbsp; Department of Emergency Medicine, Duke University &nbsp;·&nbsp;
+    <a href="mailto:mehul.patel@duke.edu">Contact Us</a>
+  </footer>
+
+</body>
+</html>

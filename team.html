@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team — EMBRACE</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --coral: #d95f3b;
+      --coral-light: #e8795e;
+      --coral-pale: #fdf0ec;
+      --off-white: #faf8f5;
+      --cream: #f2ede6;
+      --stone: #e4ddd4;
+      --text: #1e1a16;
+      --text-mid: #4a4139;
+      --text-muted: #7a6f65;
+      --navy: #1e2d4a;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off-white);
+      color: var(--text);
+      opacity: 0;
+      animation: fadeIn 0.7s ease forwards;
+    }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      background: var(--white);
+      border-bottom: 1px solid var(--stone);
+      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { height: 36px; width: auto; }
+    .nav-logo-text { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.3rem; color: var(--text); }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text-mid); text-decoration: none;
+      padding: 8px 16px; border-radius: 4px;
+      transition: color 0.2s, background 0.2s; position: relative;
+    }
+    .nav-links a:hover { color: var(--coral); background: var(--coral-pale); }
+    .nav-links a.active { color: var(--coral); }
+    .nav-links a.active::after {
+      content: ''; position: absolute;
+      bottom: -1px; left: 16px; right: 16px;
+      height: 2px; background: var(--coral); border-radius: 2px;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: var(--navy);
+      padding: 56px 40px 48px;
+      position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 90% 50%, rgba(217,95,59,0.15) 0%, transparent 60%);
+    }
+    .page-header-inner {
+      max-width: 1100px; margin: 0 auto;
+      position: relative; z-index: 1;
+      opacity: 0; animation: slideUp 0.6s 0.2s ease forwards;
+    }
+    .page-header .eyebrow {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--coral-light); margin-bottom: 10px;
+    }
+    .page-header h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--white); line-height: 1.15;
+    }
+    .page-header p {
+      margin-top: 14px;
+      font-size: 1rem; font-weight: 300;
+      color: rgba(255,255,255,0.72); max-width: 560px; line-height: 1.7;
+    }
+
+    /* ── MAIN ── */
+    main { max-width: 1100px; margin: 0 auto; padding: 64px 40px 96px; }
+
+    /* ── PI SECTION ── */
+    .pi-section {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 40px;
+      align-items: start;
+      background: var(--white);
+      border: 1px solid var(--stone);
+      border-radius: 12px;
+      padding: 36px;
+      margin-bottom: 56px;
+    }
+
+    .pi-photo {
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--coral);
+      box-shadow: 0 4px 20px rgba(217,95,59,0.2);
+      display: block;
+    }
+
+    .pi-placeholder {
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 3px solid var(--coral);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; color: var(--stone);
+    }
+
+    .pi-tag {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--coral); margin-bottom: 8px;
+    }
+
+    .pi-name {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.7rem; color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .pi-title {
+      font-size: 0.9rem; font-weight: 300;
+      color: var(--text-muted); margin-bottom: 16px;
+    }
+
+    .pi-bio {
+      font-size: 0.95rem; font-weight: 300;
+      line-height: 1.8; color: var(--text-mid);
+    }
+
+    .pi-links {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .pi-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--coral); text-decoration: none;
+      border: 1px solid rgba(217,95,59,0.3);
+      padding: 6px 14px; border-radius: 20px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .pi-link:hover { background: var(--coral-pale); border-color: var(--coral); }
+
+    /* ── TEAM SECTION ── */
+    .team-section-label {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--coral); margin-bottom: 12px;
+    }
+
+    .team-section-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.6rem; color: var(--text);
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--stone);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+
+    .team-card {
+      background: var(--white);
+      border: 1px solid var(--stone);
+      border-radius: 10px;
+      padding: 24px;
+      text-align: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .team-card:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+      transform: translateY(-2px);
+    }
+
+    .team-photo {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--stone);
+      margin: 0 auto 14px;
+      display: block;
+    }
+
+    .team-placeholder {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 2px solid var(--stone);
+      margin: 0 auto 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; color: var(--stone);
+    }
+
+    .team-name {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1rem; color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .team-role {
+      font-size: 0.8rem; font-weight: 300;
+      color: var(--text-muted); line-height: 1.5;
+    }
+
+    .team-affil {
+      font-size: 0.75rem; font-weight: 300;
+      color: var(--stone);
+      margin-top: 4px;
+    }
+
+    /* placeholder notice */
+    .placeholder-notice {
+      background: var(--cream);
+      border: 1px dashed var(--stone);
+      border-radius: 8px;
+      padding: 20px 24px;
+      font-size: 0.88rem; font-weight: 300;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.55);
+      text-align: center; padding: 28px 40px;
+      font-size: 0.78rem; font-weight: 300; letter-spacing: 0.04em;
+    }
+    footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    @media (max-width: 768px) {
+      .nav-inner, main, .page-header { padding-left: 20px; padding-right: 20px; }
+      .pi-section { grid-template-columns: 1fr; text-align: center; }
+      .pi-placeholder, .pi-photo { margin: 0 auto; }
+      .pi-links { justify-content: center; }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <img src="embrace-symbol.jpg" alt="EMBRACE symbol" />
+        <span class="nav-logo-text">EMBRACE</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Research</a></li>
+        <li><a href="team.html" class="active">Team</a></li>
+        <li><a href="contact.html">Get Involved</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <p class="eyebrow">The People Behind EMBRACE</p>
+      <h1>Our Team</h1>
+      <p>EMBRACE would not be possible without the dedication and hard work of our interdisciplinary research team.</p>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- PI -->
+    <div class="pi-section">
+      <div class="pi-placeholder">👤</div>
+      <!-- Replace above with: <img class="pi-photo" src="headshot.jpg" alt="Mehul D. Patel, PhD" /> -->
+      <div>
+        <p class="pi-tag">Principal Investigator</p>
+        <h2 class="pi-name">Mehul D. Patel, PhD</h2>
+        <p class="pi-title">Research Faculty, Department of Emergency Medicine · Duke University</p>
+        <p class="pi-bio">
+          Dr. Patel is a research faculty member in the Department of Emergency Medicine at Duke University
+          with a PhD in Epidemiology from UNC-Chapel Hill. His research focuses on regional systems of
+          emergency care, with particular emphasis on how prehospital triage and transport decisions
+          affect outcomes for patients with stroke, traumatic injury, and sepsis.
+        </p>
+        <div class="pi-links">
+          <a class="pi-link" href="https://scholars.duke.edu/person/mehul.patel" target="_blank" rel="noopener">Faculty Profile →</a>
+          <a class="pi-link" href="mailto:mehul.patel@duke.edu">Email →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEAM -->
+    <p class="team-section-label">Research Team</p>
+    <h2 class="team-section-title">Collaborators &amp; Staff</h2>
+
+    <p class="placeholder-notice">
+      Team member profiles coming soon. Visit the <a href="https://embrace-unc.my.canva.site/team" target="_blank" rel="noopener" style="color:var(--coral)">current EMBRACE team page</a> in the meantime.
+    </p>
+
+    <!-- Add team member cards here as needed. Example structure:
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-placeholder">👤</div>
+        <p class="team-name">Team Member Name</p>
+        <p class="team-role">Role / Title</p>
+        <p class="team-affil">Institution</p>
+      </div>
+    </div>
+    -->
+
+  </main>
+
+  <footer>
+    &copy; 2026 EMBRACE &nbsp;·&nbsp; Department of Emergency Medicine, Duke University &nbsp;·&nbsp;
+    <a href="mailto:mehul.patel@duke.edu">Contact Us</a>
+  </footer>
+
+</body>
+</html>
